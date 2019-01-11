@@ -1,0 +1,145 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Header
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+CSE 373    \hspace{0.4 cm}  
+{\bf Data Structures and Algorithms }
+  \hspace{0.4 cm}   Summer 2018
+\end{center} 
+\vspace{-7 mm}
+\noindent \hrulefill
+\vspace{3 mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Assignment number and due date
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+{\bf \Large Homework 3}
+
+Due Monday, July 23rd at 11:59pm
+\end{center}
+
+
+{\bf Name:} Zachary McNulty
+
+{\bf Student ID:} 1636402\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Problem 1: 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf\large Problem 2: Solving Recurrences}\\
+
+
+(i)\\ 
+Master Theorem Parameters: $d = 1, a = 7, b = 2, c = 2$ \\
+Thus, we can see that $log_b (a) = log_2 (7) > 2 = c$. As such, $log_b (a) > c$ and thus: \\ 
+$ T(n) \in \Theta(n^{log_b (a)}) = 	\Theta(n^{log_2 (7)})$ \\
+
+(ii) \\
+Master Theorem Parameters: $d = 1, a = 4, b = 2, c = 2$ \\
+Thus, we can see that $log_b (a) = log_2 (4) = 2 = c$. As such, $log_b (a) = c$ and thus: \\
+$T(n) \in \Theta(n^c log (n)) = \Theta(n^2 log (n))$ \\
+
+(iii) \\
+Master Theorem Parameters: $d = 1, a = 2, b = 2, c = \frac{1}{2}$ \\
+Thus, we can see that $log_b (a) = log_2 (2) = 1 > 1/2 = c$. As such, $log_b (a) > c$ and thus: \\ 
+$T(n) \in \Theta(n^{log_b (a)}) = \Theta(n^{log_2 (2)}) = \Theta(n)$\\
+
+(iv) \\
+Master Theorem Parameters: $ d = 1, a = 4, b = 2, c = 3$\\
+Thus, we can see that $log_b (a) = log_2 (4) = 2 < 3 = c$ As such, $log_b (a) < c$ and thus: \\
+$T(n) \in \Theta(n^c) = \Theta(n^3)$ \\
+
+(v) \\
+Master Theorem Parameters: $ d  = 1, a = 3, b = 2, c = 1$\\
+Thus, we can see that $log_b (a) = log_2 (3) > 1 = c$. As such, $log_b (a) > c$ and thus: \\
+$T(n) \in \Theta(n^{log_b (a)}) = \Theta(n^{log_2 (3)})$ \\
+
+\vskip 10in
+
+
+
+b)\\
+
+$T(n)$ \\
+$= T(n^{0.5}) + T(n^{0.5}) + log (n)$\\
+$= (T( (n^{0.5})^{0.5} ) + T( (n^{0.5})^{0.5} ) + log (n^{0.5})) + T( (n^{0.5})^{0.5} ) + T( (n^{0.5})^{0.5} ) + log (n^{0.5})) + log (n)$\\
+
+\begin{tabular}{|c | c|}
+\hline
+$i = 0$:  & $log(n)$ \\
+\hline
+$i = 1$: & $log(n^{0.5})$   $log(n^{0.5})$\\
+\hline
+$i = 2$:  & $log( (n^{0.5})^{0.5}) )$   $log((n^{0.5})^{0.5}))$ $log((n^{0.5})^{0.5}))$   $log((n^{0.5})^{0.5}))$ \\
+\hline
+\end{tabular}
+
+\vskip 1in
+
+\begin{tabular}{|c|p{4 in}|}
+\hline
+\textbf{$\#$ nodes at level i: }  &$2^i$ \\
+\hline
+\textbf{input size at level i:} & $n^ {0.5^i}$\\
+\hline
+\textbf{work per node at level i:} & $log (size) = log(n^{0.5^i}) = 0.5^i * log(n)$\\
+\hline
+\textbf{total work at level i:}  & $work_i * nodecount_i = (2^i)( (0.5^i)log(n)) = log(n)$.\\
+\hline
+\textbf{level base case:} &  $n^{0.5^i} = 2 \rightarrow 0.5^i * log_2(n) = log_2(2) = 1$ \newline
+$ \rightarrow  log_2(0.5^i * log_2(n)) = log_2 (1) = 0$\newline
+$\rightarrow   i*log_2(0.5) = - log_2(log_2(n))$ \newline
+$\rightarrow i = log_2(log_2(n))$ \\
+\hline
+\textbf{number nodes base case:} & $2^{i} = 2^{log_2(log_2(n))} = log_2(n)$ \\
+\hline
+\textbf{expression for recursive work:} & $\sum_{i = 0}^{log_2(log_2(n)) - 1} log(n)$ \\
+\hline
+\textbf{expression for non-recursive work:} & $log_2(n) * 1$\\
+\hline
+\textbf{closed form for total work: } & $recursive: log(n) + log(n) + ... + log(n)$ \newline
+$= log(n) * log_2(log_2(n))$\newline
+total = $ log(n) * log_2(log_2(n)) + log_2(n)$ \\
+\hline
+\textbf{simpliest big $\Theta$ for total work: } & $\Theta(log(n)*log(log(n)))$\\
+\hline
+
+\end{tabular}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+

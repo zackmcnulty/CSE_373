@@ -1,0 +1,108 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Header
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+CSE 373    \hspace{0.4 cm}  
+{\bf Data Structures and Algorithms }
+  \hspace{0.4 cm}   Summer 2018
+\end{center} 
+\vspace{-7 mm}
+\noindent \hrulefill
+\vspace{3 mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Assignment number and due date
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+{\bf \Large Homework 5}
+
+Due Wed, August 15th at 11:59pm
+\end{center}
+
+
+{\bf Name:} Zachary McNulty
+
+{\bf Student ID:} 1636402\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Problem 1: 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf\large Problem 2: Dynamic Programming}\\
+
+a) \\
+\begin{center}
+\textbf{Recursive Case: }\\
+$OPT(i, n) = n$ if $OPT(i+1, n-2) = n-2$ and $S[i] == S[i+n-1]$\\
+Otherwise: $OPT(i,n) = max\left( OPT(i, n-1), OPT(i+1, n-1)  \right)$\\
+
+\end{center}
+
+b) \\
+\begin{center}
+\textbf{Base Case:}\\
+$OPT(i, 0) = 0$ for all $i$ \\
+$OPT(i, 1) = 1$ for all $i$\\
+\end{center}
+
+c) \\
+
+Each case of the recursive call either calls $n$ values of $n-2$ or $n-1$, and thus this requires information from lower $n$ values first. \\
+Similiarly, each recursive call of OPT either calls $i$ values of $i$ or $i+1$, and thus this requires information from higher $i$ values first.\\
+
+Thus $OPT(i,n)$ requires the subproblems with lower $n$ values and higher/equal $i$ values to be calculated first before it can be calculated. \\
+
+d) \\
+
+We should traverse these subproblems starting at high $i$ values and working our way down, and low $n$ values and working our way up. This setup is draw below, although the choice of traversing $i$ first is arbitrary. Note that OPT(i,n) is limited in the $i$ and $n$ values it can take it: $i + n \leq S.length()$ at all times (otherwise our substring would run off the end of S.\\
+
+\vskip 5in
+
+e) \\
+public int findLongestPalindrome(String S)\\
+N = S.length();\\
+if (N <= 1) { // handles edge cases \\
+return N;\\
+}\\
+S = S.toLowerCase();  // to make casing consistent\\
+int[][] OPT = new int[N][N+1];\\
+OPT[$i$][0] = 0 for all $i$\\
+OPT[$i$][1] = 1 for all $i$\\
+for $ n = 2 \rightarrow N$\\
+for $i = N - n \rightarrow 0$ // $N - n$ forces $i + n \leq N = S.length()$\\
+          if OPT[i+1][ n-2] = n-2 and first/last characters of substring match\\
+                 OPT[i][n] = n;\\
+          else\\
+                OPT[i][n] = max(OPT[i][n-1], OPT[i+1][n-1]) // remove first letter or remove last letter\\
+return OPT[0][N];\\
+
+** For convenience, I have provided the Java code on the following page**\\
+
+\end{document}
+
+
+
+

@@ -1,0 +1,87 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Header
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+CSE 373    \hspace{0.4 cm}  
+{\bf Data Structures and Algorithms }
+  \hspace{0.4 cm}   Summer 2018
+\end{center} 
+\vspace{-7 mm}
+\noindent \hrulefill
+\vspace{3 mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Assignment number and due date
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+{\bf \Large Homework 3}
+
+Due Monday, July 23rd at 11:59pm
+\end{center}
+
+
+{\bf Name:} Zachary McNulty
+
+{\bf Student ID:} 1636402\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Problem 1: 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf\large Problem 5: Hashing}\\
+
+a) Linear Probing\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+& & 42 & 102 & 12 & 33 & 25 & 14 & 62 & \\
+\hline
+\end{tabular}\\
+collisions: 15 \\
+
+b) Quadratic Probing\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+& 62& 42 & 102 & 33 & 25 & 12 & & 14 & \\
+\hline
+\end{tabular} \\
+collisions: 9\\
+
+Primary clustering in linear probing creates more collisions because it builds up these long chunks of table that are completely filled, so if a new item gets hashed anywhere in this chunk, it will have several collisions as it makes its way towards the end. So even if items are not necessarily being hashed to the same value, they can have this issue of repeated collisions. 
+With quadratic probing, as you quickly move away from your initial hash value after a collision, these clusters do not form as readily. There is still an issue where items that get sent to the same initial hash value have to run through this set of collisions before they reach the end. However, because quadratic probing does not move one space after another, these clusters do not effect nearby hashes nearly as much: it spreads out the numbers into a series of smaller clusters, rather than one single large one. Thus it avoids this issue of nearby elements collecting together and having to probe long sequences, simply by moving the hash far away from the initial hash after an initial collision.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+

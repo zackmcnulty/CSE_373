@@ -1,0 +1,115 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Header
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+CSE 373    \hspace{0.4 cm}  
+{\bf Data Structures and Algorithms }
+  \hspace{0.4 cm}   Summer 2018
+\end{center} 
+\vspace{-7 mm}
+\noindent \hrulefill
+\vspace{3 mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Assignment number and due date
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+{\bf \Large Homework 5}
+
+Due Wed, August 15th at 11:59pm
+\end{center}
+
+
+{\bf Name:} Zachary McNulty
+
+{\bf Student ID:} 1636402\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Problem 1: 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf\large Problem 1: Minimum Spanning Trees}\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+
+\hline
+Edge Weight & 1 & 2 & 3 &4 & 5 & 6 & 7 \\
+\hline
+Edges & CF & FI, AB, DE & AD, BE, HI & GH & EC & BC, EH & DG \\
+\hline
+\end{tabular}
+\vskip 0.1in
+Edges in Sorted Order : CF, AB, DE, IF, AD, BE, HI, GH, EC, BC, EH, DG \\
+
+
+ArrayDisjointSet\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Call & A0 & B1 & C2 & D3 & E4 & F5 & G6 & H7 & I8 \\
+\hline
+Initial State & -1 & -1 &-1 & -1 & -1 & -1 & -1 & -1 & -1 \\
+\hline
+Union(C,F) & -1 & -1 &-2 & -1 & -1 & 2 & -1 & -1 & -1 \\
+\hline
+Union(A,B) & -2 & 0 &-2 & -1 & -1 & 2 & -1 & -1 & -1 \\
+\hline
+Union(D,E) & -2 & 0 &-2 & -2 & 3 & 2 & -1 & -1 & -1 \\
+\hline
+Union(I,F) & -2 & 0 &-3 & -2 & 3 & 2 & -1 & -1 & 2 \\
+\hline
+Union(A,D) & -4 & 0 &-3 & 0 & 3 & 2 & -1 & -1 & 2 \\
+\hline
+Union(B,E) & fails\\
+\hline
+Union(H,I) & -4 & 0 &-4 & 0 & 3 & 2 & -1 & 2 & 2 \\
+\hline
+Union(G,H) & -4 & 0 &-5 & 0 & 3 & 2 & 2 & 2 & 2 \\
+\hline
+Union(E,C) & 2 & 0 &-9 & 0 & 3 & 2 & 2 & 2 & 2 \\
+\hline
+
+\end{tabular}
+\vskip 0.2in
+Done! Only 1 representative element remains!\\
+
+Final ArrayDisjointSet: 
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+2 & 0 &-9 & 0 & 3 & 2 & 2 & 2 & 2\\
+\hline
+\end{tabular}
+
+\vskip 0.5in
+Edges part of MST : CF, AB, DE, IF, AD, HI, GH, EC\\
+**The Minimum Spanning Tree is drawn on the following page
+
+
+\end{document}
+
+
+
+

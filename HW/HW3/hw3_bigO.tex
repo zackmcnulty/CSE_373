@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Header
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+CSE 373    \hspace{0.4 cm}  
+{\bf Data Structures and Algorithms }
+  \hspace{0.4 cm}   Summer 2018
+\end{center} 
+\vspace{-7 mm}
+\noindent \hrulefill
+\vspace{3 mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Assignment number and due date
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+{\bf \Large Homework 3}
+
+Due Monday, July 23rd at 11:59pm
+\end{center}
+
+
+{\bf Name:} Zachary McNulty
+
+{\bf Student ID:} 1636402\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Problem 1: 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf\large Problem 1: Big-O Notation.}\\
+
+\begin{center}
+$f(n) = 10^6 *n^2 + 10^8 * n ^{1.5} + n^3 + 10^{10} * n^{2.99} \leq 10^6 *n^3 + 10^8 * n ^3 + n^3 + 10^{10} * n^3 $ for all $n \geq 1$. \\
+$ = (10^6 + 10^8  + 1 + 10^{10}) n^3$\\
+\end{center}
+
+Thus there exists a $c = (10^6 + 10^8  + 1 + 10^{10}) > 0$ and an $n_0 = 1 > 0$ such that for all $n \geq n_0 = 1$, $f(n) \leq c*n^3$. Thus $f(n)$ is dominated by $n^3$ and thus $f(n) \in O(n^3)$. \\
+\end{document}
+
+
+
+
+
+
+
+
+
