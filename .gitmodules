@@ -1,0 +1,3 @@
+[submodule "HW/HW1/hw1-zmcnulty"]
+	path = HW/HW1/hw1-zmcnulty
+	url = git@gitlab.cs.washington.edu:cse373-18su-hw1/hw1-zmcnulty.git
